@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="jp.taiga.cloudmashup"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="17"
+        android:targetSdkVersion="17" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/cloud_icon"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="jp.taiga.cloudmashup.TopActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="jp.taiga.cloudmashup.MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="jp.taiga.cloudmashup.WordViewActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="jp.taiga.cloudmashup.WordSetActivity"
+            android:label="@string/title_activity_word_set"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="jp.taiga.cloudmashup.IdeaViewActivity"
+            android:label="@string/title_activity_idea_view"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <receiver
+            android:name="jp.taiga.cloudmashup.Widget"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget" />
+        </receiver>
+        <receiver
+            android:name="jp.taiga.cloudmashup.WidgetClick"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="UPDATE_WIDGET" />
+                <action android:name="SAVE_WIDGET" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget" />
+        </receiver>
+
+        <activity
+            android:name="jp.taiga.cloudmashup.ShareActivity"
+            android:label="@string/title_activity_share" >
+        </activity>
+        <activity
+            android:name="jp.taiga.cloudmashup.HowToUseActivity"
+            android:label="@string/title_activity_how_to_use" >
+        </activity>
+    </application>
+
+</manifest>

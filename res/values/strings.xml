@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">CloudMashup</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_top">CloudMashup</string>
+    <string name="title_activity_word_view">WordViewActivity</string>
+    <string name="title_activity_word_set">キーワード一覧</string>
+    <string name="title_activity_idea_view">アイディア一覧</string>
+    <string name="title_activity_share">共有</string>
+    <string name="title_activity_how_to_use">使い方</string>
+
+</resources>
