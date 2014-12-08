@@ -8,6 +8,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -22,6 +24,9 @@ public class WordViewActivity extends Activity implements OnClickListener{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_word_view);
+		
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		
 		Intent intent = getIntent();
 		String wordA = intent.getStringExtra("wordA");
 		String wordB = intent.getStringExtra("wordB");

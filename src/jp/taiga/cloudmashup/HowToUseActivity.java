@@ -6,6 +6,8 @@ import android.content.DialogInterface;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
@@ -43,6 +45,8 @@ public class HowToUseActivity extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_how_to_use);
+		
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 		viewFlipper = (ViewFlipper) findViewById(R.id.flipper);
 

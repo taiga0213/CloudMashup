@@ -79,6 +79,14 @@
             android:name="jp.taiga.cloudmashup.HowToUseActivity"
             android:label="@string/title_activity_how_to_use" >
         </activity>
+        <activity
+            android:name="jp.taiga.cloudmashup.PreferenceActivity"
+            android:label="@string/title_activity_preference" >
+        </activity>
+        <activity
+            android:name="jp.taiga.cloudmashup.SettingActivity"
+            android:label="@string/title_activity_setting" >
+        </activity>
     </application>
 
 </manifest>

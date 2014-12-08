@@ -16,54 +16,120 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class createView {
 
-	private final int WC = ViewGroup.LayoutParams.WRAP_CONTENT;
 	private Random random = new Random();
 
 	TextView wordA;
 	TextView wordB;
 	Cursor c;
 	String lockWord = "";
-	Button cloudButton;
+	ImageButton cloudButton;
+	cloudView cloudView;
+	ObjectAnimator transAnimator;
+	FrameLayout layout;
+	Boolean type;
+	ArrayList<String> list;
+	int[] index;
+	Boolean leftRight;
+	Context context;
+	int top;
 
 	public void createCloud(final Context context, final FrameLayout layout,
-			final int top) {
-		final cloudView cloudView = new cloudView(context);
+			final int top, final Boolean type, final Boolean leftRight) {
+		cloudView = new cloudView(context) {
+			protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+				super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+				// 引数の情報から画面の横方向の描画領域のサイズを取得する
+				int width = MeasureSpec.getSize(widthMeasureSpec);
+				int height = MeasureSpec.getSize(heightMeasureSpec);
+				// Viewの描画サイズを横方向を画面端まで使う指定
+				setMeasuredDimension(width, height);
+			}
+
+		};
+		list = new ArrayList<String>();
+
+		this.layout = layout;
+		this.type = type;
+		this.leftRight = leftRight;
+		this.top = top;
+		this.context = context;
 
 		wordA = (TextView) cloudView.findViewById(R.id.getWordA);
 		wordB = (TextView) cloudView.findViewById(R.id.getWordB);
-		cloudButton = (Button) cloudView.findViewById(R.id.cloud);
+		cloudButton = (ImageButton) cloudView.findViewById(R.id.cloud);
 
 		FrameLayout.LayoutParams p = new FrameLayout.LayoutParams(600, 450);
-		p.setMargins(0, top, 0, 0);
-		ObjectAnimator transAnimator = ObjectAnimator.ofFloat(cloudView, "x",
-				-600f, 1100f);
-		
-		transAnimator.setDuration((random.nextInt(30) + 30) * 100);
-		transAnimator.addListener(new AnimatorListenerAdapter() {
-			@Override
-			public void onAnimationEnd(Animator animation) {
-				// Write processing after animating
-				layout.removeView(cloudView);
-				createCloud(context, layout, top);
-			}
-		});
 
-		ArrayList<String> list = new ArrayList<String>();
-		// ダミーデータ格納
-		// for(int i=0;i<10;i++){
-		// list.add("ダミー"+Integer.toString(i));
-		// }
+		transAnimator = new ObjectAnimator();
+
+		if (type) {
+			// アニメーション有り
+			transAnimator = ObjectAnimator
+					.ofFloat(cloudView, "x", -600f, 1100f);
+			p.setMargins(0, top, 0, 0);
+
+			transAnimator.setDuration((random.nextInt(30) + 30) * 100);
+			transAnimator.addListener(new AnimatorListenerAdapter() {
+				@Override
+				public void onAnimationEnd(Animator animation) {
+					// Write processing after animating
+					layout.removeView(cloudView);
+					createCloud(context, layout, top, type, leftRight);
+				}
+
+				@Override
+				public void onAnimationCancel(Animator animation) {
+					// TODO 自動生成されたメソッド・スタブ
+					layout.removeView(cloudView);
+				}
+
+			});
+
+		} else {
+			// アニメーションなし
+			if (leftRight) {
+				p.setMargins(-20, top, 0, 0);
+			} else {
+				p.setMargins(520, top, 0, 0);
+			}
+
+		}
+
+		wordSet(context);
+
+		lockWord(context);
+
+		if (lockWord.equals("")) {
+			wordA.setText(list.get(index[0]));
+		} else {
+			wordA.setText(lockWord);
+		}
+
+		if (lockWord.equals(list.get(index[1]))) {
+			wordB.setText(list.get(index[0]));
+		} else {
+			wordB.setText(list.get(index[1]));
+		}
+
+		layout.addView(cloudView, p);
+
+		if (type) {
+			transAnimator.start();
+		}
+	}
+
+	public void remove() {
+		transAnimator.cancel();
+	}
+
+	public void wordSet(final Context context) {
 
 		// データ一覧
 		try {
@@ -97,7 +163,7 @@ public class createView {
 		}
 
 		selectWord SelectWord = new selectWord();
-		int[] index = SelectWord.select(list);
+		index = SelectWord.select(list);
 
 		cloudButton.setOnClickListener(new OnClickListener() {
 
@@ -106,10 +172,6 @@ public class createView {
 				// TODO 自動生成されたメソッド・スタブ
 				String wordAString = wordA.getText().toString();
 				String wordBString = wordB.getText().toString();
-				// Intent intent = new Intent(context, WordViewActivity.class);
-				// intent.putExtra("wordA", wordAString);
-				// intent.putExtra("wordB", wordBString);
-				// v.getContext().startActivity(intent);
 
 				try {
 
@@ -126,29 +188,56 @@ public class createView {
 					db.close();
 
 					// alphaプロパティを0fから1fに変化させます
-//					ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(
-//							cloudView, "alpha", 1f, 0f);
-					
+					// ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(
+					// cloudView, "alpha", 1f, 0f);
 
-				    // translationXプロパティを0fからtoXに変化させます
-				    PropertyValuesHolder holderX = PropertyValuesHolder.ofFloat( "translationX", 700f );
-				    // translationYプロパティを0fからtoYに変化させます
-				    PropertyValuesHolder holderY = PropertyValuesHolder.ofFloat( "translationY", cloudView.getY()*-1-300 );
-				    
-				    // translationXプロパティを0fからtoXに変化させます
-				    PropertyValuesHolder scaleX  = PropertyValuesHolder.ofFloat( "scaleX", 0.2f );
-				    // translationYプロパティを0fからtoYに変化させます
-				    PropertyValuesHolder scaleY  = PropertyValuesHolder.ofFloat( "scaleY", 0.2f );
-				    
-				    // targetに対してholderX, holderY, holderRotationを同時に実行させます
-				    ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(
-				            cloudView, holderX, holderY, scaleX, scaleY);
+					// translationXプロパティを0fからtoXに変化させます
+					PropertyValuesHolder holderX;
 
+					if (type) {
+						holderX = PropertyValuesHolder.ofFloat("translationX",
+								500f);
+					} else {
+						if (leftRight) {
+							holderX = PropertyValuesHolder.ofFloat(
+									"translationX", 580f);
+						} else {
+							holderX = PropertyValuesHolder.ofFloat(
+									"translationX", 20f);
+						}
+					}
+
+					// translationYプロパティを0fからtoYに変化させます
+					PropertyValuesHolder holderY = PropertyValuesHolder
+							.ofFloat("translationY", cloudView.getY() * -1
+									- 300);
+
+					// translationXプロパティを0fからtoXに変化させます
+					PropertyValuesHolder scaleX = PropertyValuesHolder.ofFloat(
+							"scaleX", 0.2f);
+					// translationYプロパティを0fからtoYに変化させます
+					PropertyValuesHolder scaleY = PropertyValuesHolder.ofFloat(
+							"scaleY", 0.2f);
+
+					// targetに対してholderX, holderY, holderRotationを同時に実行させます
+					ObjectAnimator objectAnimator = ObjectAnimator
+							.ofPropertyValuesHolder(cloudView, holderX,
+									holderY, scaleX, scaleY);
 
 					objectAnimator.addListener(new AnimatorListenerAdapter() {
 						@Override
 						public void onAnimationEnd(Animator animation) {
 							// Write processing after animating
+							layout.removeView(cloudView);
+							if(!type){
+								createCloud(context, layout, top, type, leftRight);
+							}
+						}
+
+						@Override
+						public void onAnimationCancel(Animator animation) {
+							// TODO 自動生成されたメソッド・スタブ
+							super.onAnimationCancel(animation);
 							layout.removeView(cloudView);
 						}
 					});
@@ -169,12 +258,15 @@ public class createView {
 
 			}
 		});
+	}
+
+	public void lockWord(Context context) {
+		DBHelper helper = new DBHelper(context, "cloud_db.db", null, 1);
+		// データベースの設定
+		SQLiteDatabase db;
+		db = helper.getWritableDatabase();
 
 		try {
-			DBHelper helper = new DBHelper(context, "cloud_db.db", null, 1);
-			// データベースの設定
-			SQLiteDatabase db;
-			db = helper.getWritableDatabase();
 
 			String countSql = "select count(*) from lock";
 
@@ -197,21 +289,7 @@ public class createView {
 			Log.e("error", "データベースエラー");
 			Log.e("exception", ex.getMessage());
 		}
-
-		if (lockWord.equals("")) {
-			wordA.setText(list.get(index[0]));
-		} else {
-			wordA.setText(lockWord);
-		}
-
-		if (lockWord.equals(list.get(index[1]))) {
-			wordB.setText(list.get(index[0]));
-		} else {
-			wordB.setText(list.get(index[1]));
-		}
-
-		layout.addView(cloudView, p);
-		transAnimator.start();
+		
+		db.close();
 	}
-
 }

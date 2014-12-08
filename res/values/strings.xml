@@ -10,5 +10,7 @@
     <string name="title_activity_idea_view">アイディア一覧</string>
     <string name="title_activity_share">共有</string>
     <string name="title_activity_how_to_use">使い方</string>
+    <string name="title_activity_preference">PreferenceActivity</string>
+    <string name="title_activity_setting">SettingActivity</string>
 
 </resources>

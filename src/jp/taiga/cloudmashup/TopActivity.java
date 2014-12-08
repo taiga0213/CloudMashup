@@ -10,7 +10,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.Button;
 
 /**
@@ -24,6 +26,9 @@ public class TopActivity extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_top);
+
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		
 		try {
 			DBHelper helper = new DBHelper(this, "cloud_db.db", null, 1);
 			// データベースの設定

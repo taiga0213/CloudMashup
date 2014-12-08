@@ -3,33 +3,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <Button
+    <ImageButton
         android:id="@+id/cloud"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/cloudbutton" />
+        android:layout_width="190dp"
+        android:layout_height="130dp"
+        android:background="@drawable/cloudbutton"
+        android:scaleType="center" />
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="165dp" >
-
-        <TextView
-            android:id="@+id/getWordA"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="55dp"
-            android:gravity="center"
-            android:text="TextView" />
+        android:layout_width="190dp"
+        android:layout_height="110dp" >
 
         <TextView
             android:id="@+id/getWordB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/getWordA"
+            android:gravity="center"
+            android:text="TextView"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/getWordA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:gravity="center"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textSize="14sp" />
 
     </RelativeLayout>
 

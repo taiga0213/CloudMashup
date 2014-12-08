@@ -6,10 +6,11 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class cloudView extends FrameLayout{
-
+	
 	public cloudView(Context context) {
 		super(context);
 		View layout = LayoutInflater.from(context).inflate(R.layout.cloud, this);
