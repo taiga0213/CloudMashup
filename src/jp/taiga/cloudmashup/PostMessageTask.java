@@ -26,10 +26,7 @@ public class PostMessageTask extends AsyncTask<JSONObject, Integer, String> {
 
 	Context context;
 	ProgressDialog dialog;
-	// String serverIP = "192.168.43.166";//学校無線
-	// String serverIP = "192.168.100.8";//シアタールーム
 	 String serverIP = "192.168.43.94";//テザリング
-	// String serverIP = "192.168.13.68";//TKPカンファレンス
 
 	public PostMessageTask(Context context) {
 		// TODO 自動生成されたコンストラクター・スタブ
