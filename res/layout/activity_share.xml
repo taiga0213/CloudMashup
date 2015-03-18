@@ -7,10 +7,17 @@
     android:orientation="vertical"
     tools:context=".ShareActivity" >
 
-    <ListView
-        android:id="@+id/listView"
+<!--     <ListView -->
+<!--         android:id="@+id/listView" -->
+<!--         android:layout_width="match_parent" -->
+<!--         android:layout_height="wrap_content" > -->
+<!--     </ListView> -->
+
+    <FrameLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-    </ListView>
+        android:layout_height="match_parent" >
+
+    </FrameLayout>
 
 </LinearLayout>

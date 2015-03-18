@@ -7,16 +7,41 @@
     android:orientation="vertical"
     tools:context=".TopActivity" >
 
-    <Button
-        android:id="@+id/btnCustom"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
+<!--     <TextView -->
+<!--         android:id="@+id/title1" -->
+<!--         android:layout_width="wrap_content" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:layout_alignParentLeft="true" -->
+<!--         android:layout_alignParentTop="true" -->
+<!--         android:layout_marginLeft="27dp" -->
+<!--         android:layout_marginTop="114dp" -->
+<!--         android:text="クラウド" -->
+<!--         android:textAppearance="?android:attr/textAppearanceLarge" -->
+<!--         android:textColor="#fff" -->
+<!--         android:textSize="30sp" /> -->
+
+<!--     <TextView -->
+<!--         android:id="@+id/title2" -->
+<!--         android:layout_width="wrap_content" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:layout_alignParentRight="true" -->
+<!--         android:layout_below="@+id/title1" -->
+<!--         android:layout_marginRight="35dp" -->
+<!--         android:layout_marginTop="14dp" -->
+<!--         android:text="マッシュアップ" -->
+<!--         android:textAppearance="?android:attr/textAppearanceLarge" -->
+<!--         android:textColor="#fff" -->
+<!--         android:textSize="30sp" /> -->
+
+    <TextView
+        android:id="@+id/idea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="52dp"
-        android:background="@drawable/cloudbutton"
-        android:text="Tap to Start" />
-
-
+        android:layout_marginBottom="63dp"
+        android:text="Tap to Start"
+        android:textColor="#fff"
+        android:textSize="20sp" />
 
 </RelativeLayout>

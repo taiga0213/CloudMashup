@@ -3,8 +3,30 @@
 
     <SwitchPreference
         android:defaultValue="true"
+        android:disableDependentsState="false"
         android:key="animType"
         android:summary="雲を移動させる"
         android:title="アニメーション" />
+
+    <EditTextPreference
+        android:defaultValue="5"
+        android:dependency="animType"
+        android:inputType="number"
+        android:key="min"
+        android:summary="アニメーションの最短表示時間"
+        android:title="最短表示時間" />
+    <EditTextPreference
+        android:defaultValue="10"
+        android:dependency="animType"
+        android:inputType="number"
+        android:key="max"
+        android:summary="アニメーションの最長表示時間"
+        android:title="最長表示時間" />
+
+    <ListPreference
+        android:defaultValue="2"
+        android:key="wordNum"
+        android:summary="掛け合わせるキーワードの数"
+        android:title="キーワード表示数" android:entryValues="@array/wordEntryValue" android:entries="@array/wordEntry"/>
 
 </PreferenceScreen>

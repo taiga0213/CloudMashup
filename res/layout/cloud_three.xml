@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="190dp"
+    android:layout_height="130dp" >
+
+    <ImageButton
+        android:id="@+id/cloud"
+        android:layout_width="190dp"
+        android:layout_height="130dp"
+        android:background="@drawable/cloudbutton"
+        android:scaleType="center" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:id="@+id/wordGetB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:scrollHorizontally="true"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/wordGetC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/wordGetB"
+            android:layout_centerHorizontal="true"
+            android:scrollHorizontally="true"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/wordGetA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/wordGetB"
+            android:layout_centerHorizontal="true"
+
+            android:scrollHorizontally="true"
+            android:text="TextView" />
+    </RelativeLayout>
+
+</FrameLayout>

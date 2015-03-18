@@ -15,6 +15,14 @@
         android:text="【保存したアイディア】"
         android:textSize="20sp" />
 
+    <TextView
+        android:id="@+id/empty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="アイディアがありません"
+        android:textSize="20sp" />
+
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"

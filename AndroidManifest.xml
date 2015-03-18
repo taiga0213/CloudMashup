@@ -5,14 +5,14 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="17"
+        android:minSdkVersion="15"
         android:targetSdkVersion="17" />
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/cloud_icon"
+        android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
@@ -48,7 +48,7 @@
         </activity>
 
         <receiver
-            android:name="jp.taiga.cloudmashup.Widget"
+            android:name="jp.taiga.cloudmashup.Widget2"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -56,36 +56,63 @@
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/widget" />
+                android:resource="@xml/widget2" />
         </receiver>
         <receiver
-            android:name="jp.taiga.cloudmashup.WidgetClick"
+            android:name="jp.taiga.cloudmashup.Widget2Click"
             android:label="@string/app_name" >
             <intent-filter>
-                <action android:name="UPDATE_WIDGET" />
-                <action android:name="SAVE_WIDGET" />
+                <action android:name="UPDATE_WIDGET2" />
+                <action android:name="SAVE_WIDGET2" />
             </intent-filter>
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/widget" />
+                android:resource="@xml/widget2" />
+        </receiver>
+        <receiver
+            android:name="jp.taiga.cloudmashup.Widget3"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget3" />
+        </receiver>
+        <receiver
+            android:name="jp.taiga.cloudmashup.Widget3Click"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="UPDATE_WIDGET3" />
+                <action android:name="SAVE_WIDGET3" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget3" />
         </receiver>
 
         <activity
             android:name="jp.taiga.cloudmashup.ShareActivity"
-            android:label="@string/title_activity_share" >
+            android:label="@string/title_activity_share"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="jp.taiga.cloudmashup.HowToUseActivity"
-            android:label="@string/title_activity_how_to_use" >
+            android:label="@string/title_activity_how_to_use"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="jp.taiga.cloudmashup.PreferenceActivity"
-            android:label="@string/title_activity_preference" >
+            android:label="@string/title_activity_preference"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="jp.taiga.cloudmashup.SettingActivity"
-            android:label="@string/title_activity_setting" >
+            android:label="@string/title_activity_setting"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 

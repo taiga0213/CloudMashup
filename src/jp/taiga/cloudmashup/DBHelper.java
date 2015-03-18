@@ -30,16 +30,34 @@ public class DBHelper extends SQLiteOpenHelper {
         //テーブルの名前
         createSqlIdia += "keywordA text,";
         createSqlIdia += "keywordB text,";
-        createSqlIdia += "primary key(keywordA, keywordB)";
+        createSqlIdia += "keywordC text,";
+        createSqlIdia += "comment text,";
+        createSqlIdia += "primary key(keywordA, keywordB,keywordC)";
         createSqlIdia += ")";
         db.execSQL(createSqlIdia);
         
 		String createSqlLock = "";
         createSqlLock += "create table lock (";
         //テーブルの名前
-        createSqlLock += "keyword text primary key";
+        createSqlLock += "keyword text,";
+        createSqlLock += "date text,";
+        createSqlLock += "primary key(keyword)";
         createSqlLock += ")";
         db.execSQL(createSqlLock);
+        
+        String createSqlLock2 = "";
+        createSqlLock2 += "create table lock2 (";
+        //テーブルの名前
+        createSqlLock2 += "keyword text,";
+        createSqlLock2 += "date text,";
+        createSqlLock2 += "primary key(keyword)";
+        createSqlLock2 += ")";
+        db.execSQL(createSqlLock2);
+        
+		db.execSQL("insert into keywords(keyword) values ('Android');");
+		db.execSQL("insert into keywords(keyword) values ('アプリ');");
+		db.execSQL("insert into keywords(keyword) values ('アイディア');");
+                
 	}
 
 	@Override
